@@ -17,7 +17,7 @@ echo "Precompiling assets..."
 bundle exec rails assets:precompile
 
 # db:prod_seeds
-echo "Loading production seeds..."
-bundle exec rails db:seed
+#echo "Loading production seeds..."
+#bundle exec rails db:seed
 
 echo "Rails initialization and production seeds completed successfully."
