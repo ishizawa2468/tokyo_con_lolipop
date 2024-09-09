@@ -1,0 +1,24 @@
+<!-- app/views/comments/_form.html.erb -->
+<%= form_with(model: [post, comment], local: true, class: 'comment-form') do |form| %>
+  <% if comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+      <ul>
+        <% comment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :content, (comment.persisted? ? 'コメントを編集する' : 'コメントを追加する') %>
+    <%= form.text_area :content, rows: 3, class: 'form-input' %>
+  </div>
+  <div class="actions">
+    <%= form.submit (comment.persisted? ? '更新' : '投稿'), class: 'btn-primary' %>
+    <% if comment.persisted? %>
+      <%= link_to 'キャンセル', post_path(post), class: 'btn-secondary' %>
+    <% end %>
+  </div>
+<% end %>

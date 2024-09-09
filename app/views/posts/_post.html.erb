@@ -1,0 +1,56 @@
+<div class="post-card">
+  <header class="post-header">
+    <%= link_to post_path(post), class: 'post-content-link' do %>
+      <h2 class="post-title"><%= post.title %></h2>
+    <% end %>
+    <div class="post-meta">
+<!--      <span class="post-user">By: <%#= post.poster_name.presence || '匿名コンサルタント' %></span>-->
+      <span class="post-user">By: <%= post.user.nickname %></span>
+    </div>
+  </header>
+
+  <div class="post-body">
+    <% if local_assigns[:full_content] %>
+      <p class="post-content"><%= auto_link(simple_format(post.content), html: { target: '_blank' }) %></p>
+    <% else %>
+      <p class="post-content"><%= auto_link(truncate(post.content, length: 60), html: { target: '_blank' }) %></p>
+    <% end %>
+
+    <% if post.image.attached? %>
+      <div class="post-image">
+        <%= image_tag post.image.variant(resize_to_limit: [400, 400]) %>
+      </div>
+    <% end %>
+  </div>
+
+  <footer class="post-footer">
+    <p class="post-date">
+      投稿日: <%= post.created_at&.strftime("%Y-%m-%d") %>
+      (<%= time_ago_in_words(post.created_at, include_seconds: true) %> ago)
+      <% if post.edited? %>
+        <span class="edited-indicator"><br>(編集済み)</span>
+      <% end %>
+    </p>
+
+    <div class="post-footer-content">
+      <div class="post-stats">
+        <%= link_to post_path(post, anchor: 'comments'), class: 'comment-link' do %>
+          <span><i class="fas fa-comment"></i> <%= post.comments.count %></span>
+        <% end %>
+        <span id="post_<%= post.id %>_like">
+          <%= render partial: 'posts/like_button', locals: { post: post, liked: post.liked_by?(current_user), likes_count: post.likes_count } %>
+        </span>
+      </div>
+
+      <% if current_user == post.user %>
+        <div class="post-actions">
+          <%= link_to '編集', edit_post_path(post), class: 'btn btn-edit' %>
+          <%= button_to '削除', post_path(post),
+                        method: :delete,
+                        form: { data: { turbo_confirm: '本当に削除しますか？' } },
+                        class: 'btn btn-danger' %>
+        </div>
+      <% end %>
+    </div>
+  </footer>
+</div>

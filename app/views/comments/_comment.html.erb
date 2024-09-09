@@ -1,0 +1,27 @@
+<!-- app/views/comments/_comment.html.erb -->
+<div id="comment-<%= comment.id %>" class="comment">
+  <div class="comment__header">
+    <p class="comment__info">
+      <span class="comment__meta comment__number">#<%= comment.instance_variable_get(:@comment_number) %></span>
+      <span class="comment__author"><%= comment.user&.nickname || "Unknown User" %></span>
+    </p>
+    <% if current_user == comment.user %>
+      <div class="comment__actions">
+        <%= link_to '編集', post_path(@post, edit_comment_id: comment.id), class: 'btn btn-edit' %>
+        <%= button_to '削除', post_comment_path(@post, comment),
+                      method: :delete,
+                      form: { data: { turbo_confirm: '本当に削除しますか？' } },
+                      class: 'btn btn-danger' %>
+      </div>
+    <% end %>
+  </div>
+  <div class="comment__content">
+    <%= auto_link(simple_format(comment.content), html: { target: '_blank' }) %>
+  </div>
+  <p class="comment__meta">
+    <%= time_ago_in_words(comment.created_at, include_seconds: true) %> ago
+    <% if comment.edited? %>
+      <span class="edited-indicator">(編集済み)</span>
+    <% end %>
+  </p>
+</div>

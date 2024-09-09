@@ -1,0 +1,53 @@
+body.has-fixed-header {
+  padding-top: 60px; // ヘッダーの高さに応じて調整
+}
+
+.fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: 60px; // ヘッダーの高さを固定
+}
+
+.site-header {
+  border-bottom: 2px solid $color-link;
+  display: flex;
+  width: 100%;
+  max-width: none; // コンテナの最大幅制限を解除
+}
+
+.header-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.main-nav {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.nav-link {
+  color: $color-header-text;
+  text-decoration: none;
+  transition: color 0.3s, background-color 0.3s;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  // TODO レスポンシブ
+  font-size: 2.0rem;
+
+  &:hover {
+    color: $color-active;
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+
+  &.active {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}

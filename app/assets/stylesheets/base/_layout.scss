@@ -1,0 +1,25 @@
+/* _layout.scss */
+html {
+  background-color: $color-background;
+}
+
+body {
+  overflow-anchor: none;
+}
+
+.container {
+  width: 100%;
+  max-width: 800px; // コンテナの最大幅を狭くして、よりシングルカラムらしくします
+  margin: 0 auto;
+  align-items: center;
+}
+
+.main-content {
+  //padding-top: 60px;
+  background-color: $color-background;
+  max-width: 100%; // main-contentの最大幅をコンテナいっぱいに設定
+}
+.site-header, .site-footer {
+  padding: 20px 0;
+  background-color: $color-header-background;
+}

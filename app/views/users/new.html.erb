@@ -1,0 +1,48 @@
+<% provide(:title, "Sign up") %>
+
+<div class="signup-page">
+  <div class="logo">
+    <%= link_to root_path do %>
+      <%= image_tag 'logo.png', alt: 'Project Dinner Logo', class: 'logo-image' %>
+    <% end %>
+  </div>
+
+  <div class="signup-container">
+    <h1>Sign up</h1>
+
+    <% if @user.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+        <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= form_with(model: @user, local: true) do |form| %>
+      <div class="field">
+        <%= form.label :nickname %>
+        <%= form.text_field :nickname %>
+      </div>
+
+      <div class="field">
+        <%= form.label :password, "Password (personal)" %>
+        <%= form.password_field :password %>
+      </div>
+
+      <div class="field">
+        <%= form.label :password_confirmation, "Password Confirmation" %>
+        <%= form.password_field :password_confirmation %>
+      </div>
+
+      <div class="field">
+        <%= form.label :watchword, "Key Phrase" %>
+        <%= form.text_field :watchword %>
+      </div>
+
+      <%= form.submit "SIGN UP" %>
+    <% end %>
+  </div>
+</div>

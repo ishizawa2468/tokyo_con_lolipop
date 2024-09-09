@@ -1,0 +1,38 @@
+<div id="admin-dashboard">
+  <h1 class="admin-page-title">管理者ページ</h1>
+
+  <section class="admin-section">
+    <h2 class="admin-section-title">合言葉一覧</h2>
+    <ul class="admin-watchwords-list">
+      <% @watchwords.each do |watchword| %>
+        <li class="admin-watchword-item"><%= watchword.word %></li>
+      <% end %>
+    </ul>
+  </section>
+
+  <section class="admin-section">
+    <h2 class="admin-section-title">ユーザー一覧</h2>
+    <div class="admin-table-container">
+      <table id="admin-users-table">
+        <thead>
+        <tr>
+          <th>Nickname</th>
+          <th>ID</th>
+          <th>Admin</th>
+          <th>Watchword</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.nickname %></td>
+            <td><%= user.id %></td>
+            <td><%= user.admin ? 'O' : '' %></td>
+            <td><%= user.watchword %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>

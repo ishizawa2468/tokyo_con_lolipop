@@ -1,0 +1,6 @@
+<%= form_with(url: like_post_path(post), method: :post, class: 'like-button', id: "post_#{post.id}_like", data: { controller: "like", action: "like:update->like#updateUI" }) do |f| %>
+  <button type="submit" class="like-button">
+    <i class="fas fa-heart <%= post.liked_by?(current_user) ? 'liked' : '' %>" data-like-target="heart"></i>
+    <span class="like-count" data-like-target="count"><%= post.likes_count %></span>
+  </button>
+<% end %>

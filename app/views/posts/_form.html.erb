@@ -1,0 +1,40 @@
+<%= form_with(model: post, local: true, class: 'form-container') do |form| %>
+  <% if post.errors.any? %>
+    <div id="error_explanation" class="error-messages">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+      <ul>
+        <% post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :poster_name, "投稿名の選択", class: 'form-label' %>
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+      <div style="display: flex; align-items: center;">
+        <%= form.radio_button :poster_name, current_user.nickname, checked: true, class: 'form-radio' %>
+        <%= form.label :poster_name_nickname, current_user.nickname, class: 'form-radio-label', style: 'margin-left: 5px;' %>
+      </div>
+      <div style="display: flex; align-items: center;">
+        <%= form.radio_button :poster_name, '匿名コンサルタント', class: 'form-radio' %>
+        <%= form.label :poster_name_anonymous, '匿名コンサルタント', class: 'form-radio-label', style: 'margin-left: 5px;' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :title, class: 'form-label' %>
+    <%= form.text_field :title, class: 'form-input' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :content, class: 'form-label' %>
+    <%= form.text_area :content, rows: 5, class: 'form-input' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit post.persisted? ? '更新する' : '投稿する', class: 'btn-primary' %>
+  </div>
+<% end %>

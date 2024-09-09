@@ -1,0 +1,140 @@
+// _before_login.scss
+
+.login-page,
+.signup-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  // TODO レスポンシブ、原因あまりわかってない
+  min-height: calc(100vh - 60px);
+}
+
+.login-container,
+.signup-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  max-width: 400px;
+  margin: 5px auto;
+  padding: 20px;
+  background-color: $color-card-background;
+  border: 2px solid $color-link;
+  border-radius: 10px;
+  margin-bottom: 30px;
+
+  h1 {
+    color: $color-title;
+    font-size: 28px;
+    margin: 0;
+    padding-bottom: 10px;
+    align-self: center;
+  }
+
+  form {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; // 子要素を親の幅いっぱいに広げる
+  }
+
+  .field {
+    margin-bottom: 1.5rem;
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: $color-text;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid $color-link;
+      border-radius: 5px;
+      background-color: $color-input-background;
+      color: $color-input-text;
+      transition: border-color 0.3s ease;
+
+      &:focus {
+        outline: none;
+        border-color: $color-active;
+      }
+    }
+  }
+
+  input[type="submit"] {
+    padding: 1rem 2rem;
+    background-color: $color-button;
+    color: $color-button-text;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    align-self: center;
+    margin-top: 1rem;
+
+    &:hover {
+      background-color: darken($color-button, 10%);
+    }
+  }
+}
+
+.logo-image {
+  display: flex;
+  // TODO レスポンシブ
+  max-width: 500px;
+  width: 80%;
+  margin: 1rem auto;
+}
+
+//// サインアップページ固有のスタイル
+//.signup-container {
+//  #error_explanation {
+//    color: $color-active;
+//    margin-bottom: 1rem;
+//    padding: 1rem;
+//    border: 1px solid $color-active;
+//    border-radius: 5px;
+//    background-color: lighten($color-active, 35%);
+//
+//    h1 {
+//      font-size: 2.4rem;
+//      display: inline-block;
+//      margin-bottom: 0.5rem;
+//      color: $color-active;
+//    }
+//
+//    ul {
+//      list-style-type: none;
+//      padding-left: 0;
+//
+//      li {
+//        margin-bottom: 0.25rem;
+//        font-size: 1.4rem;
+//      }
+//    }
+//  }
+//}
+//
+//// レスポンシブデザイン
+//@media (max-width: 480px) {
+//  .login-container,
+//  .signup-container {
+//    width: 85%;
+//  }
+//
+//  .field {
+//    input[type="text"],
+//    input[type="password"] {
+//      padding: 0.6rem;
+//    }
+//  }
+//
+//  input[type="submit"] {
+//    padding: 0.6rem;
+//  }
+//}

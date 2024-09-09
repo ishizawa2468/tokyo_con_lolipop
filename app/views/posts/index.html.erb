@@ -1,0 +1,27 @@
+<div class="all-post-container">
+<!--  <h1>Home</h1>-->
+  <div class="home-announce">
+    <h1>
+      【本HPの目的】
+    </h1>
+    <p>
+      皆さんで建設的な議論をしましょう！
+    </p>
+
+    <%= link_to '新しい投稿を作成', new_post_path, class: 'btn new-post-btn' %>
+
+  </div>
+
+<!--  <hr class="announce-post-border">-->
+
+  <div class="post-list">
+    <% @posts.each do |post| %>
+      <%= render 'post', post: post %>
+    <% end %>
+  </div>
+
+  <div class="pagination">
+    <%= paginate @posts %>
+  </div>
+
+</div>

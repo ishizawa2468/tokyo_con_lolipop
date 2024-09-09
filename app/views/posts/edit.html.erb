@@ -1,0 +1,12 @@
+<!--とりあえずnewを使い回し-->
+<!--必要に応じてeditにして装飾を変える-->
+<div class="new-post-container">
+  <h1 class="new-post-title">投稿を編集</h1>
+
+  <div class="new-post-form">
+    <%= render 'form', post: @post %>
+  </div>
+
+  <%= link_to '投稿に戻る', @post, class: 'btn btn-secondary' %>
+  <%= link_to '一覧に戻る', posts_path, class: 'btn btn-secondary' %>
+</div>

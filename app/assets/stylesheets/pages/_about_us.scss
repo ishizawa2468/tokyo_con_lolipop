@@ -1,0 +1,61 @@
+.about-us {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: $color-background;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+
+  h1 {
+    color: $color-title;
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 30px;
+  }
+
+  h2 {
+    color: $color-title;
+    font-size: 1.8em;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid $color-link;
+    padding-bottom: 10px;
+  }
+
+  ol {
+    padding: 0 20px;
+    margin-bottom: 15px;
+
+    li {
+      margin-bottom: 10px;
+      position: relative;
+
+      &::before {
+        color: $color-link;
+        font-weight: bold;
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em;
+      }
+    }
+  }
+
+  p {
+    margin-bottom: 15px;
+  }
+}
+
+// レスポンシブデザイン
+@media (max-width: 600px) {
+  .about-us {
+    padding: 10px;
+
+    h1 {
+      font-size: 2em;
+    }
+
+    h2 {
+      font-size: 1.5em;
+    }
+  }
+}

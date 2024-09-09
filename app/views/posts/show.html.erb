@@ -1,0 +1,26 @@
+<!-- app/views/posts/show.html.erb -->
+<div class="post-show">
+  <%= render 'post', post: @post, full_content: true %>
+</div>
+
+<div class="comments-section">
+  <h3 class="comments-section__title">コメント</h3>
+  <div class="comments-list">
+    <% @comments.each do |comment| %>
+      <% if comment.id == params[:edit_comment_id].to_i %>
+        <%= render 'comments/form', post: @post, comment: comment %>
+      <% else %>
+        <%= render 'comments/comment', comment: comment, post: @post %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<% unless params[:edit_comment_id] %>
+  <div class="comment-form">
+    <h3>新しいコメント</h3>
+    <%= render 'comments/form', post: @post, comment: Comment.new %>
+  </div>
+<% end %>
+
+<%= link_to "一覧に戻る", posts_path, class: 'btn btn-secondary' %>

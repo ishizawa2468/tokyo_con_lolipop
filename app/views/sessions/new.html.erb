@@ -1,0 +1,24 @@
+<% provide(:title, "Log in") %>
+
+<div class="login-page">
+  <div class="logo">
+    <%= image_tag 'logo.png', alt: 'Project Dinner Logo', class: 'logo-image' %>
+  </div>
+
+  <div class="login-container">
+    <h1>Log in</h1>
+    <%= form_with(url: login_path, scope: :session, local: true) do |form| %>
+      <div class="field">
+        <%= form.label :nickname, "Nickname" %>
+        <%= form.text_field :nickname %>
+      </div>
+
+      <div class="field">
+        <%= form.label :password, "Password" %>
+        <%= form.password_field :password %>
+      </div>
+
+      <%= form.submit "LOG IN" %>
+    <% end %>
+  </div>
+</div>

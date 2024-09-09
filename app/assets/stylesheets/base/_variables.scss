@@ -1,0 +1,39 @@
+
+// Colors
+$color-1: #ddfee4;
+$color-2: #28cc9e;
+$color-3: #196b69;
+$color-4: #132f2b;
+$color-bcg: #16734D;
+
+$primary-color: $color-bcg;
+$secondary-color: $color-4;
+
+// -------------------------------
+// background
+$color-background: white;    // 全体背景色
+
+// header, footer
+$color-header-background: $color-3; // header, footerの背景色
+$color-header-text: white;     // 通常文字フォントcolor
+
+// button
+$color-button: $color-3;
+$color-button-text: white;
+
+// input
+$color-input-background: white;   // 入力box背景
+$color-input-text: black;
+
+// post-cards
+$color-card-background: white;    // カード背景色
+$color-border: $color-4;
+
+// text
+$color-title: $color-4;    // ページタイトル
+$color-link: $secondary-color;      // nav, post-title
+$color-active: $primary-color; // リンクを押した時の色
+$color-text: black;     // 通常文字フォントcolor
+
+
+$window_size_min: 400;

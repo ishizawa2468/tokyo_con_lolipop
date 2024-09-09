@@ -1,16 +1,73 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>TokyoConLolipop</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<html lang="ja">
+<head>
+  <title><%= full_title(yield(:title)) %></title>
+  <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+  <meta charset="utf-8">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_importmap_tags %>
 
-  <body>
+  <!-- Google Analytics -->
+  <% if Rails.env.production? %>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4FQ0GMEJ37"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-4FQ0GMEJ37');
+    </script>
+  <% end %>
+  <!-- End Google Analytics -->
+</head>
+
+<body class="has-fixed-header">
+<header class="site-header fixed-header">
+  <div class="container">
+    <div class="header-content">
+      <nav class="main-nav">
+        <% if logged_in? %>
+          <%= link_to 'Log out', logout_path, data: { turbo_method: :delete, turbo_confirm: "本当にログアウトしますか？" }, class: 'nav-link' %>
+          <%= link_to 'Home', root_path, class: "nav-link #{current_page?(root_path) || current_page?(posts_path) ? 'active' : ''}" %>
+          <%= link_to '+ Post', new_post_path, class: "nav-link #{current_page?(new_post_path) ? 'active' : ''}" %>
+        <% else %>
+          <%= link_to 'Log in', login_path, class: "nav-link #{current_page?(login_path) ? 'active' : ''}" %>
+          <%= link_to 'Sign up', signup_path, class: "nav-link #{current_page?(signup_path) ? 'active' : ''}" %>
+        <% end %>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="main-content">
+  <div class="container">
+    <div class="alert-container">
+      <% flash.each do |key, message| %>
+        <div class="alert alert-<%= key %>"><%= simple_format(message) %></div>
+      <% end %>
+    </div>
+
     <%= yield %>
-  </body>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-content">
+    <div class="footer-nav">
+      <p class="footer-contact-heading">Contact</p>
+      <a href="mailto:sp.project.dinner@gmail.com" class="footer-link" aria-label="Email us at sp.project.dinner@gmail.com">
+        sp.project.dinner@gmail.com
+      </a>
+    </div>
+    <div class="footer-copyright">
+      <p>&copy; 2024 Project Dinner</p>
+    </div>
+  </div>
+</footer>
+
+</body>
 </html>

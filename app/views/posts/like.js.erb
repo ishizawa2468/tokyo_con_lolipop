@@ -1,0 +1,10 @@
+var heartIcon = document.querySelector("#post-<%= @post.id %> .fa-heart");
+var likeCount = document.querySelector("#post-<%= @post.id %> .like-count");
+
+likeCount.innerText = "<%= @like_count %>";
+
+if (<%= @liked %>) {
+    heartIcon.classList.add('liked');
+} else {
+    heartIcon.classList.remove('liked');
+}

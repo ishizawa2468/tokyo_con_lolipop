@@ -1,0 +1,38 @@
+.site-footer {
+  padding: 2rem 0;
+  border-top: 2px solid $color-link;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: $color-header-text;
+}
+
+.footer-nav {
+  margin-bottom: 1.5rem;
+}
+
+.footer-contact-heading {
+  font-size: 2.0rem;
+  margin-bottom: 0.8rem;
+  opacity: 0.8;
+}
+
+.footer-link {
+  color: $color-header-text;
+  text-decoration: none;
+  // TODO レスポンシブ
+  font-size: 2.0rem;
+
+  &:hover {
+    color: $color-active;
+  }
+}
+
+.footer-copyright {
+  font-size: 1.4rem;
+  opacity: 0.8;
+}
