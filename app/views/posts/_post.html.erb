@@ -4,8 +4,7 @@
       <h2 class="post-title"><%= post.title %></h2>
     <% end %>
     <div class="post-meta">
-<!--      <span class="post-user">By: <%#= post.poster_name.presence || '匿名コンサルタント' %></span>-->
-      <span class="post-user">By: <%= post.user.nickname %></span>
+      <span class="post-user">By: <%= post.poster_name %></span>
     </div>
   </header>
 
