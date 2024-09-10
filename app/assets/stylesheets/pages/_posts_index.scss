@@ -30,6 +30,19 @@
   margin-bottom: 20px;
 }
 
+.h1-link {
+  margin-bottom: 10px;
+  font-size: 2.4rem;
+  border-radius: 5px;
+  color: $color-header-background;
+
+  &:hover {
+    color: darken($color-header-background, 5%);
+    background-color: darken($color-background, 5%);
+    transition: background-color 0.3s, color 0.3s;
+  }
+}
+
 .post-card {
   display: flex;
   flex-direction: column;
@@ -45,12 +58,6 @@
     transform: translateY(-5px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   }
-}
-
-.h1-link {
-  margin-bottom: 10px;
-  font-size: 2.4rem;
-  color: $color-title;
 }
 
 .post-header {

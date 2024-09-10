@@ -2,7 +2,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 20px 0;
+  margin: 10px 0;
+  padding: 5px;
   width: 100%;
   overflow-x: auto;
   white-space: nowrap;
@@ -22,13 +23,11 @@
     color: $color-link;
     text-decoration: none;
     border-radius: 6px;
-    font-size: 18px;
+    font-size: 16px;
     transition: all 0.3s ease;
     &:hover {
-      background-color: $color-link;
+      background-color: $color-header-background;
       color: $color-card-background;
-      transform: translateY(-3px);
-      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
     }
   }
   .current {
@@ -36,13 +35,12 @@
     color: $color-card-background;
     font-weight: bold;
     transform: scale(1.15);
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
   }
   .first, .prev, .next, .last {
     a {
       font-weight: bold;
       color: $color-title;
-      padding: 12px 18px;
+      padding: 12px 12px;
       &:hover {
         color: $color-card-background;
       }
