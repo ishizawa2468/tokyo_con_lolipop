@@ -115,10 +115,20 @@ def generate_likes
   users = User.all
   posts = Post.all
 
-  # 各ユーザーが50%の確率で各投稿にいいねをする
-  users.each do |user|
-    posts.each do |post|
-      if rand < 0.05 # 5%の確率
+  # 投稿の作成日から最も新しい投稿日と最も古い投稿日を取得
+  oldest_post = posts.order(:created_at).first
+  newest_post = posts.order(:created_at).last
+  total_days = (newest_post.created_at - oldest_post.created_at).to_i / 1.day
+
+  posts.each do |post|
+    age_days = (post.created_at - oldest_post.created_at).to_i / 1.day
+    # 確率の範囲を設定（最も新しい投稿が60%、最も古い投稿が5%）
+    min_probability = 0.05
+    max_probability = 0.60
+    possibility = min_probability + (max_probability - min_probability) * (age_days.to_f / total_days)
+
+    users.each do |user|
+      if rand < possibility
         Like.find_or_create_by!(user: user, post: post) do |like|
           like.created_at = like.updated_at = Time.zone.now - rand(7).days
         end
@@ -129,6 +139,8 @@ def generate_likes
   puts "Likes data generated successfully."
 end
 
+# Watchwordのシード
+seed_from_csv('watchwords.csv', Watchword)
 # Usersのシード
 seed_from_csv('users.csv', User)
 # Postsのシード
