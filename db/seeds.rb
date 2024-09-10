@@ -39,13 +39,13 @@ def seed_from_csv(file_name, model_class)
     when 'Post'
       user = User.find_by(nickname: attributes.delete('user_nickname'))
       attributes['user_id'] = user.id if user
-      attributes['poster_name'] = user.nickname.present? ? user.nickname : '匿名コンサルタント'
+      attributes['poster_name'] = user&.nickname.present? ? user.nickname : '匿名コンサルタント'
     when 'Comment'
       user = User.find_by(nickname: attributes.delete('user_nickname'))
       post = Post.find_by(title: attributes.delete('post_title'))
       attributes['user_id'] = user.id if user
       attributes['post_id'] = post.id if post
-      attributes['poster_name'] = user.nickname.present? ? user.nickname : '匿名コンサルタント'
+      attributes['poster_name'] = user&.nickname.present? ? user.nickname : '匿名コンサルタント'
     end
 
     # created_atとupdated_atを設定
