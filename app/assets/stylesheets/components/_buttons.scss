@@ -19,6 +19,10 @@
   margin-bottom: 20px;
   color: $color-button-text;
   background-color: $color-button;
+
+  &:hover {
+    transition: background-color 0.3s, color 0.3s;
+  }
 }
 
 input[type="submit"] {
