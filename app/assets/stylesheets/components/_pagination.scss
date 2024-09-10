@@ -1,19 +1,57 @@
 .pagination {
   display: flex;
   justify-content: center;
-  margin: 20px auto;
-
-  a, span {
-    padding: 8px 12px;
-    margin: 0 5px;
-    background-color: #2a2a2a;
-    color: #40e0d0;
-    text-decoration: none;
-    border-radius: 3px;
+  align-items: center;
+  margin: 20px 0;
+  width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  &::-webkit-scrollbar {
+    display: none;
   }
-
-  a:hover {
-    background-color: #40e0d0;
-    color: #1a1a1a;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  span {
+    margin: 0 2px;
+  }
+  a, .current {
+    display: inline-block;
+    padding: 12px 18px;
+    background-color: $color-card-background;
+    color: $color-link;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    &:hover {
+      background-color: $color-link;
+      color: $color-card-background;
+      transform: translateY(-3px);
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+    }
+  }
+  .current {
+    background-color: $color-header-background;
+    color: $color-card-background;
+    font-weight: bold;
+    transform: scale(1.15);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+  }
+  .first, .prev, .next, .last {
+    a {
+      font-weight: bold;
+      color: $color-title;
+      padding: 12px 18px;
+      &:hover {
+        color: $color-card-background;
+      }
+    }
+  }
+  @media screen and (max-width: 767px) {
+    margin: 10px 0;
+    a, .current, .first a, .prev a, .next a, .last a {
+      padding: 6px 6px;
+    }
   }
 }
