@@ -13,6 +13,16 @@
 
   <div class="field">
     <%= form.label :content, (comment.persisted? ? 'コメントを編集する' : 'コメントを追加する') %>
+    <div class="comment__poster_name_choice" style="display: flex; flex-direction: column; gap: 10px;">
+      <div style="display: flex; align-items: center;">
+        <%= form.radio_button :poster_name, current_user.nickname, checked: true, class: 'form-radio' %>
+        <%= form.label :poster_name_nickname, current_user.nickname, class: 'form-radio-label', style: 'margin-left: 5px;' %>
+      </div>
+      <div style="display: flex; align-items: center;">
+        <%= form.radio_button :poster_name, '匿名コンサルタント', class: 'form-radio' %>
+        <%= form.label :poster_name_anonymous, '匿名コンサルタント', class: 'form-radio-label', style: 'margin-left: 5px;' %>
+      </div>
+    </div>
     <%= form.text_area :content, rows: 3, class: 'form-input' %>
   </div>
   <div class="actions">

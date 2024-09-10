@@ -3,7 +3,7 @@
   <div class="comment__header">
     <p class="comment__info">
       <span class="comment__meta comment__number">#<%= comment.instance_variable_get(:@comment_number) %></span>
-      <span class="comment__author"><%= comment.user&.nickname || "Unknown User" %></span>
+      <span class="comment__author"><%= comment&.poster_name || "Unknown User" %></span>
     </p>
     <% if current_user == comment.user %>
       <div class="comment__actions">
