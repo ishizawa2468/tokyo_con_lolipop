@@ -52,6 +52,9 @@ gem 'rails_autolink'
 # SCSSに移行
 gem 'sassc-rails'
 
+# 検索機能
+gem 'ransack'
+
 # Active Storageの画像をリサイズ
 gem 'mini_magick'
 # Active Storage画像のvalidation
