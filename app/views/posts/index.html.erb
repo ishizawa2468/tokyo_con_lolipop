@@ -10,7 +10,25 @@
 
   </div>
 
-<!--  <hr class="announce-post-border">-->
+  <%= search_form_for @q do |f| %>
+    <div>
+      <%= f.label :title_cont, "タイトルで検索" %>
+      <%= f.search_field :title_cont %>
+    </div>
+    <div>
+      <%= f.label :content_cont, "コンテンツで検索" %>
+      <%= f.search_field :content_cont %>
+    </div>
+    <div>
+      <%= f.label :comments_content_cont, "コメントで検索" %>
+      <%= f.search_field :comments_content_cont %>
+    </div>
+    <div>
+      <%= f.submit "検索" %>
+    </div>
+  <% end %>
+
+  <!--  <hr class="announce-post-border">-->
 
   <div class="post-list">
     <% @posts.each do |post| %>

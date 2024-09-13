@@ -9,4 +9,8 @@ class Comment < ApplicationRecord
     created_at != updated_at
   end
 
+  # ransackで検索可能な属性を定義
+  def self.ransackable_attributes(auth_object = nil)
+    ["content", "created_at", "updated_at", "post_id", "user_id"]
+  end
 end
