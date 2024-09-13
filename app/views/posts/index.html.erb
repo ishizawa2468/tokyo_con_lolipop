@@ -7,15 +7,23 @@
     </p>
   </div>
 
-  <%= search_form_for @q do |f| %>
-    <div>
-      <%= f.label :title_or_content_or_comments_content_cont, "キーワード検索" %>
-      <%= f.search_field :title_or_content_or_comments_content_cont %>
-    </div>
-    <div>
-      <%= f.submit "検索" %>
-    </div>
-  <% end %>
+  <div class="search-container">
+    <%= search_form_for @q, html: { class: 'search-form' } do |f| %>
+      <div>
+        <%= f.label :title_or_content_or_comments_content_cont, "キーワード検索" %>
+        <%= f.search_field :title_or_content_or_comments_content_cont %>
+      </div>
+      <div class="button-container">
+        <%= f.submit "検索" %>
+      </div>
+    <% end %>
+
+    <% if params[:q] && params[:q][:title_or_content_or_comments_content_cont].present? %>
+      <div class="search-keyword">
+        <%= params[:q][:title_or_content_or_comments_content_cont] %>
+      </div>
+    <% end %>
+  </div>
 
   <!--  <hr class="announce-post-border">-->
 
