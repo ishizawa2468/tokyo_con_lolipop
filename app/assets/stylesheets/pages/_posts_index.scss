@@ -32,9 +32,10 @@
 
 .h1-link {
   margin-bottom: 10px;
-  font-size: 2.4rem;
+  font-size: 3.2rem;
   border-radius: 5px;
   color: $color-header-background;
+  font-weight: bold;
 
   &:hover {
     color: darken($color-header-background, 5%);

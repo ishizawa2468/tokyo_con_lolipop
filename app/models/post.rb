@@ -39,6 +39,16 @@ class Post < ApplicationRecord
     likes.count
   end
 
+  # ransackで検索可能な属性を定義
+  def self.ransackable_attributes(auth_object = nil)
+    ["title", "content"]
+  end
+
+  # ransackで検索可能な関連を定義
+  def self.ransackable_associations(auth_object = nil)
+    ["comments", "user"]
+  end
+
   private
 
   def resize_image
