@@ -15,7 +15,7 @@
       <p class="post-content"><%= auto_link(truncate(post.content, length: 60), html: { target: '_blank' }) %></p>
     <% end %>
 
-    <% if post.image.attached? && local_assigns[:full_content] %>
+    <% if post.image.attached?%>
       <div class="post-image-container">
         <%= image_tag post.image, class: 'post-image full-width' %>
       </div>

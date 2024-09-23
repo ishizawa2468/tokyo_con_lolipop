@@ -45,8 +45,12 @@ class PostsController < ApplicationController
     post_params_with_default = post_params
     post_params_with_default[:poster_name] = "匿名コンサルタント" if post_params_with_default[:poster_name].blank?
 
-    # 画像削除のロジック
-    @post.image.purge if params[:remove_image] == '1' && @post.image.attached?
+    # 画像の処理
+    if params[:post][:remove_image] == '1'
+      @post.image.purge
+    elsif params[:post][:image].present?
+      @post.image.attach(params[:post][:image])
+    end
 
     if @post.update(post_params_with_default)
       redirect_to @post, notice: 'ポストが更新されました。'
@@ -81,8 +85,9 @@ class PostsController < ApplicationController
 
   private
 
+
   def post_params
-    params.require(:post).permit(:title, :content, :image, :poster_name, :remove_image)
+    params.require(:post).permit(:title, :content, :poster_name, :image)
   end
 
   def set_post
