@@ -34,6 +34,11 @@
     <%= form.text_area :content, rows: 5, class: 'form-input' %>
   </div>
 
+  <div class="field">
+    <%= form.label :image, "画像", class: 'form-label' %>
+    <%= form.file_field :image, class: 'form-input', accept: 'image/png,image/jpg,image/jpeg,image/heic' %>
+  </div>
+
   <div class="actions">
     <%= form.submit post.persisted? ? '更新する' : '投稿する', class: 'btn-primary' %>
   </div>
