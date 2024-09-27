@@ -103,8 +103,8 @@ class PostsController < ApplicationController
 
   def handle_post_error(action)
     @posts = Post.includes(:user, :comments).order(created_at: :desc).page(params[:page]).per(10) if action == :new
-    flash.now[:alert] = 'Post操作に失敗しました。'
-    flash.now[:alert] << ' ' + @post.errors.full_messages.join(', ') if @post.errors.any?
+    flash.now[:alert] = '投稿に失敗しました。'
+    flash.now[:alert] << "\n" + @post.errors.full_messages.join("\n") if @post.errors.any?
     render action, status: :unprocessable_entity
   end
 
