@@ -11,7 +11,7 @@ class Post < ApplicationRecord
   validates :poster_name, presence: true
 
   validates :image,
-            content_type: ['image/png', 'image/jpg', 'image/jpeg', 'image/heic'],
+            content_type: ['image/png', 'image/jpg', 'image/jpeg', 'image/heic', 'image/gif'],
             size: { less_than: 5.megabytes ,
                     message: 'is too large. Maximum size allowed is 5MB.' }
   after_commit :resize_image, on: [:create]

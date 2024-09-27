@@ -36,7 +36,7 @@
 
   <div class="field">
     <%= form.label :image, "画像", class: 'form-label' %>
-    <%= form.file_field :image, class: 'form-input', accept: 'image/png,image/jpg,image/jpeg,image/heic' %>
+    <%= form.file_field :image, class: 'form-input', accept: 'image/png,image/jpg,image/jpeg,image/heic,image/gif' %>
   </div>
 
   <% if post.persisted? && post.image.attached? %>
