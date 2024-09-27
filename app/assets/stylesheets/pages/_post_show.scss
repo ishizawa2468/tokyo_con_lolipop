@@ -74,6 +74,23 @@
   }
 }
 
+.post-card {
+  width: 100%;
+  max-width: 800px; /* または任意の最大幅 */
+  margin: 0 auto;
+}
+
+.post-image-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.post-image.full-width {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
 form.comment-form {
   width: 100%;
   margin: 20px 0;
